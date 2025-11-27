@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sous nos pieds</title>
+  <meta name="description" content="Webdocumentaire sur la géothermie à Coulommiers — photos, articles et film." />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">GC</div>
+        <div>
+          <div class="title">Géothermie — Coulommiers</div>
+          <div style="font-size:0.82rem;color:var(--muted)">Webdocumentaire local & immersif</div>
+        </div>
+      </div>
+      <nav>
+        <button class="btn btn-secondary"> <a href="#webdoc">Webdoc</a></button>
+        <button class="btn btn-secondary"><a href="site_geothermie_coulommiers.html">photo</a> </button>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Articles
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="article_1.html">Article 1</a>
+            <a class="dropdown-item" href="article_2.html">Article 2</a>
+            <a class="dropdown-item" href="article_3.html">Article 3</a>
+          </div>
+        </div>
+        <button class="btn btn-secondary"><a href="site_geothermie_coulommiers.html">contact</a> </button>
+
+      </nav>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero" aria-label="Intro">
+        <div class="hero-media" id="heroMedia">
+          <!-- Image de présentation : nous affichons le fichier '../images/hero.jpg' via une balise <img> pour être certain qu'il apparaisse localement -->
+          <img class="hero-img" src="../images/hero.jpeg" alt="Présentation — Géothermie à Coulommiers" loading="eager"
+            tabindex="0" role="button" aria-label="Ouvrir l'image en grand" />
+        </div>
+        <div class="hero-content">
+          <div style="flex:1">
+            <h1>Sous nos pieds</h1>
+            <p>Un webdocumentaire sur la chaleur cachée de Coulommiers.</p>
+        <button class="btn btn-secondary"><a href="#webdoc">Entrez dans le webdoc</a> </button>
+          </div>
+          <div style="width:220px;text-align:right;color:var(--muted)">
+            <div style="font-weight:700">Format</div>
+            <div>Vidéo</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WEBDOC -->
+      <section id="webdoc">
+        <h2 class="section-title">Webdocumentaire</h2>
+        <div class="webdoc-wrap">
+          <div>
+            <div class="video-player">
+              <!--
+                Pour insérer ton webdocumentaire local :
+                1) Place le fichier MP4 dans le même dossier que ce HTML.
+                2) Remplace "sample.mp4" par le nom de ton fichier.
+                3) Si tu souhaites utiliser YouTube/Vimeo, remplace la balise <video> par un <iframe>.
+              -->
+              <video id="docVideo" controls playsinline preload="metadata">
+                <source src="webdoc.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <div class="video-meta">
+              <h3 style="margin:0">Titre du webdocumentaire</h3>
+              <p class="meta">Durée : 5 min • Réalisé par : Monnerat Maxime, Morancy Manon & Borel Maïlys</p>
+              <p style="color:var(--muted);margin-top:6px">Résumé : Découvrez la géothermie de Coulommiers grâce à une
+                interview mais aussi des images d'archives. </p>
+                <div style="margin-top:12px;display:flex;gap:8px">
+                <button class="btn btn-secondary" onclick="toggleTranscript()">Transpcripton</button>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PHOTOS -->
+      <section id="photos">
+        <h2 class="section-title">Photos</h2>
+
+        <div class="grid gallery" id="gallery">
+          <!-- Exemple d'items; remplace les src par tes fichiers locaux (photos/photo1.jpg etc.) -->
+          <div class="photo-card" tabindex="0" data-full="photos/photo1.jpg">
+            <img src="../images/schéma1.jpg" alt="Photo chantier" loading="lazy" />
+            <div class="photo-caption">Schéma Forage</div>
+          </div>
+          <div class="photo-card" tabindex="0" data-full="photos/photo2.jpg">
+            <img src="../images/station-geothermie.png" alt="Vue aérienne" loading="lazy" />
+            <div class="photo-caption">Vue aérienne — Réseau</div>
+          </div>
+          <div class="photo-card" tabindex="0" data-full="photos/photo3.jpg">
+            <img src="../images/hero.jpeg" alt="Équipe" loading="lazy" />
+            <div class="photo-caption">Équipe sur le terrain</div>
+          </div>
+          <div class="photo-lien" tabindex="0" onclick="window.location.href='phoyo_gal.html'" >
+            <div class="photo-lien-content">
+              <div >Découvrez plus de photos</div>
+              <div >Cliquez pour voir la galerie complète</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lightbox" id="lightbox" aria-hidden="true">
+          <button class="close" onclick="closeLightbox()">✕</button>
+          <img src="" alt="" id="lightboxImg" />
+        </div>
+      </section>
+
+      <!-- ARTICLES -->
+      <section id="articles">
+        <h2 class="section-title">Articles</h2>
+
+
+        <div class="grid articles" id="articlesGrid">
+          <article class="card">
+            <img src="../images/Coulommiers-gothermie-2.JPG" alt="Bâtiments chauffés">
+            <h3>Comment la géothermie chauffe les écoles</h3>
+            <div class="meta">Monnerat Maxime — 4 nov.2025</div>
+            <p style="color:var(--muted);margin:6px 0">Un article qui raconte l'implantation du réseau et ses bénéfices
+              pour les bâtiments publics.</p>
+          <button class="btn btn-secondary"><a href="article_1.html">lire</a> </button>
+          
+          </article>
+
+          <article class="card">
+            <img src="../images/Coulommiers-gothermie-2.JPG" alt="Forage">
+            <h3>Technique : forages et nappes phréatiques</h3>
+            <div class="meta">Borel Maïlys — 4 nov. 2025</div>
+            <p style="color:var(--muted);margin:6px 0">Analyse technique et retours d'experts sur les méthodes utilisées
+              localement.</p>
+            <button class="btn btn-secondary mt-4"><a href="article_2.html">lire</a> </button>
+          </article>
+
+          <article class="card">
+            <img src="../images/Coulommiers-gothermie-2.JPG" alt="Carte">
+            <h3>Le territoire face à la transition</h3>
+            <div class="meta">Morancy Manon — 4 nov. 2025</div>
+            <p style="color:var(--muted);margin:6px 0">Enjeux politiques et sociaux autour du projet.</p>
+          <button class="btn btn-secondary mt-5"><a href="article_3.html"> Lire</a> </button>
+          </article>
+
+        </div>
+
+        <div class="modal" id="articleModal" aria-hidden="true">
+          <div class="panel">
+            <button style="float:right;background:transparent;border:0;color:var(--muted);font-size:18px"
+              onclick="closeArticle()">✕</button>
+            <div id="articleContent"></div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div>© 2025 — Webdoc Géothermie Coulommiers</div>
+    </footer>
+    <!-- Back to top button -->
+    <button id="backToTop" aria-label="Remonter en haut" title="Remonter en haut">↑</button>
+  </div>
+  <script src="../js/script.js"></script>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</html>
