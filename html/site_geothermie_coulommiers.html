@@ -14,17 +14,20 @@
   <div class="wrap">
     <header>
       <div class="brand">
-        <div class="logo">GC</div>
+        <div class="bg-warning rounded-3 p-0 me-3" style="overflow:hidden; width:50px; height:50px;">
+            <img src="../images/logo-png.png" alt="logo" style="width:100%; height:100%; object-fit:cover;">
+        </div>
+
         <div>
-          <div class="title">Géothermie — Coulommiers</div>
-          <div style="font-size:0.82rem;color:var(--muted)">Webdocumentaire local & immersif</div>
+          <div class="title">MMM Media</div>
+          <div style="font-size:0.82rem;color:var(--muted)">Webdocumentaire local</div>
         </div>
       </div>
       <nav>
-        <button class="btn btn-secondary"> <a href="#webdoc">Webdoc</a></button>
-        <button class="btn btn-secondary"><a href="site_geothermie_coulommiers.html">photo</a> </button>
+        <button class="btn btn-primary"> <a href="#webdoc">Webdocumentaire</a></button>
+        <button class="btn btn-primary"><a href="phoyo_gal.html">photos</a> </button>
         <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+          <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Articles
           </button>
@@ -34,7 +37,7 @@
             <a class="dropdown-item" href="article_3.html">Article 3</a>
           </div>
         </div>
-        <button class="btn btn-secondary"><a href="site_geothermie_coulommiers.html">contact</a> </button>
+        <button class="btn btn-primary"><a href="site_geothermie_coulommiers.html">contact</a> </button>
 
       </nav>
     </header>
@@ -44,14 +47,14 @@
       <section class="hero" aria-label="Intro">
         <div class="hero-media" id="heroMedia">
           <!-- Image de présentation : nous affichons le fichier '../images/hero.jpg' via une balise <img> pour être certain qu'il apparaisse localement -->
-          <img class="hero-img" src="../images/hero.jpeg" alt="Présentation — Géothermie à Coulommiers" loading="eager"
+          <img class="hero-img" src="../images/DSC00975.JPG" alt="Présentation — Géothermie à Coulommiers" loading="eager"
             tabindex="0" role="button" aria-label="Ouvrir l'image en grand" />
         </div>
         <div class="hero-content">
           <div style="flex:1">
-            <h1>Sous nos pieds</h1>
-            <p>Un webdocumentaire sur la chaleur cachée de Coulommiers.</p>
-        <button class="btn btn-secondary"><a href="#webdoc">Entrez dans le webdoc</a> </button>
+            <h1>Sous Nos Pieds !</h1>
+            <p>Découvrez un webdocumentaire sur la chaleur cachée de Coulommiers.</p>
+        <button class="btn btn-primary"><a href="#webdoc">Entrez dans le webdoc</a> </button>
           </div>
           <div style="width:220px;text-align:right;color:var(--muted)">
             <div style="font-weight:700">Format</div>
@@ -77,12 +80,12 @@
               </video>
             </div>
             <div class="video-meta">
-              <h3 style="margin:0">Titre du webdocumentaire</h3>
+              <h3 style="margin:0">Sous Nos Pieds !</h3>
               <p class="meta">Durée : 5 min • Réalisé par : Monnerat Maxime, Morancy Manon & Borel Maïlys</p>
               <p style="color:var(--muted);margin-top:6px">Résumé : Découvrez la géothermie de Coulommiers grâce à une
                 interview mais aussi des images d'archives. </p>
                 <div style="margin-top:12px;display:flex;gap:8px">
-                <button class="btn btn-secondary" onclick="toggleTranscript()">Transpcripton</button>
+                <button class="btn btn-primary" onclick="toggleTranscript()">Transpcripton</button>
 
               </div>
             </div>
@@ -105,8 +108,8 @@
             <div class="photo-caption">Vue aérienne — Réseau</div>
           </div>
           <div class="photo-card" tabindex="0" data-full="photos/photo3.jpg">
-            <img src="../images/hero.jpeg" alt="Équipe" loading="lazy" />
-            <div class="photo-caption">Équipe sur le terrain</div>
+            <img src="../images/DSC00954.JPG" alt="Bureau" loading="lazy" />
+            <div class="photo-caption">Bureau</div>
           </div>
           <div class="photo-lien" tabindex="0" onclick="window.location.href='phoyo_gal.html'" >
             <div class="photo-lien-content">
@@ -134,17 +137,18 @@
             <div class="meta">Monnerat Maxime — 4 nov.2025</div>
             <p style="color:var(--muted);margin:6px 0">Un article qui raconte l'implantation du réseau et ses bénéfices
               pour les bâtiments publics.</p>
-          <button class="btn btn-secondary"><a href="article_1.html">lire</a> </button>
+          <a href="article_1.html" class="btn btn-primary">Lire</a>
+
           
           </article>
 
           <article class="card">
-            <img src="../images/Coulommiers-gothermie-2.JPG" alt="Forage">
-            <h3>Technique : forages et nappes phréatiques</h3>
+            <img src="../images/" alt="Forage">
+            <h3>Géothermie à Coulommiers : impacts sociaux et économiques sur la ville </h3>
             <div class="meta">Borel Maïlys — 4 nov. 2025</div>
-            <p style="color:var(--muted);margin:6px 0">Analyse technique et retours d'experts sur les méthodes utilisées
-              localement.</p>
-            <button class="btn btn-secondary mt-4"><a href="article_2.html">lire</a> </button>
+            <p style="color:var(--muted);margin:6px 0">
+            Enjeux sociaux et économiques sur les méthodes utilisées localement.</p>
+            <a href="article_2.html" class="btn btn-primary">Lire</a>
           </article>
 
           <article class="card">
@@ -152,7 +156,7 @@
             <h3>Le territoire face à la transition</h3>
             <div class="meta">Morancy Manon — 4 nov. 2025</div>
             <p style="color:var(--muted);margin:6px 0">Enjeux politiques et sociaux autour du projet.</p>
-          <button class="btn btn-secondary mt-5"><a href="article_3.html"> Lire</a> </button>
+          <a href="article_3.html" class="btn btn-primary">Lire</a>
           </article>
 
         </div>
@@ -169,7 +173,7 @@
     </main>
 
     <footer>
-      <div>© 2025 — Webdoc Géothermie Coulommiers</div>
+      <div>© 2025 — Sous Nos Pieds — Webdoc Géothermie Coulommiers</div>
     </footer>
     <!-- Back to top button -->
     <button id="backToTop" aria-label="Remonter en haut" title="Remonter en haut">↑</button>
