@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Sous nos pieds</title>
+  <title>Sous Nos Pieds</title>
   <meta name="description" content="Webdocumentaire sur la géothermie à Coulommiers — photos, articles et film." />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -20,12 +20,12 @@
       <section class="hero" aria-label="Intro">
         <div class="hero-media" id="heroMedia">
           <!-- Image de présentation : nous affichons le fichier '../images/hero.jpg' via une balise <img> pour être certain qu'il apparaisse localement -->
-          <img class="hero-img" src="../images/DSC00975.JPG" alt="Présentation — Géothermie à Coulommiers"
+          <img class="hero-img" src="../images/DSC009752.JPG" alt="Présentation — Géothermie à Coulommiers"
             loading="eager" tabindex="0" role="button" aria-label="Ouvrir l'image en grand" />
         </div>
         <div class="hero-content">
           <div style="flex:1">
-            <h1>Sous Nos Pieds !</h1>
+            <h1>Sous Nos Pieds</h1>
             <p>Découvrez un webdocumentaire sur la chaleur cachée de Coulommiers.</p>
             <button class="btn btn-primary"><a href="#webdoc">Entrez dans le webdoc</a> </button>
           </div>
@@ -49,18 +49,13 @@
                 3) Si tu souhaites utiliser YouTube/Vimeo, remplace la balise <video> par un <iframe>.
               -->
               <video id="docVideo" controls playsinline preload="metadata">
-                <source src="webdoc.mp4" type="video/mp4" />
+                <source src="455639_Iceland_Iceland83_1920x1080.mp4" type="video/mp4" />
               </video>
             </div>
             <div class="video-meta">
               <h3 style="margin:0">Sous Nos Pieds</h3>
               <p class="meta">Durée : 5 min • Réalisé par : Monnerat Maxime, Morancy Manon & Borel Maïlys</p>
               <p style="color:var(--muted);margin-top:6px">Résumé : Découvrez la géothermie de Coulommiers grâce à une
-                interview mais aussi des images d'archives. </p>
-              <div style="margin-top:12px;display:flex;gap:8px">
-                <button class="btn btn-primary" onclick="toggleTranscript()">Transpcripton</button>
-
-              </div>
             </div>
           </div>
         </div>
@@ -94,12 +89,12 @@
         <div class="grid gallery" id="gallery">
           <!-- Exemple d'items; remplace les src par tes fichiers locaux (photos/photo1.jpg etc.) -->
           <div class="photo-card" tabindex="0" data-full="photos/photo1.jpg">
-            <img src="../images/schéma1.jpg" alt="Photo chantier" loading="lazy" />
-            <div class="photo-caption">Schéma Forage</div>
+            <img src="../images/station-geothermie.png" alt="Photo chantier" loading="lazy" />
+            <div class="photo-caption">Vue aérienne</div>
           </div>
           <div class="photo-card" tabindex="0" data-full="photos/photo2.jpg">
-            <img src="../images/station-geothermie.png" alt="Vue aérienne" loading="lazy" />
-            <div class="photo-caption">Vue aérienne — Réseau</div>
+            <img src="../images/DSC009752.JPG" alt="Vue aérienne" loading="lazy" />
+            <div class="photo-caption">Vue </div>
           </div>
           <div class="photo-card" tabindex="0" data-full="photos/photo3.jpg">
             <img src="../images/DSC00954.JPG" alt="Bureau" loading="lazy" />
@@ -147,9 +142,11 @@
 
           <article class="card">
             <img src="../images/Coulommiers-gothermie-2.JPG" alt="Carte">
-            <h3>Le territoire face à la transition</h3>
+            <h3>Le territoire face à la transition écologique de la géothermie</h3>
             <div class="meta">Morancy Manon — 4 nov. 2025</div>
-            <p style="color:var(--muted);margin:6px 0">Enjeux politiques et sociaux autour du projet.</p>
+            <p style="color:var(--muted);margin:6px 0">
+              Enjeux politiques et sociaux autour du projet.
+            Lorem ipsum dolor sit amet consectetur adipisicing. </p>
             <a href="article_3.html" class="btn btn-primary">Lire</a>
           </article>
 
@@ -169,9 +166,6 @@
     <footer>
 
       <div>
-        <div class="bg-warning rounded-3 p-0 me-3" style="overflow:hidden; width:50px; height:50px;">
-          <img src="../images/logo-png.png" alt="logo" style="width:100%; height:100%; object-fit:cover;">
-        </div>
         © 2025 — Sous Nos Pieds — Webdoc Géothermie Coulommiers
       </div>
     </footer>
