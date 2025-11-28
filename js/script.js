@@ -10,29 +10,39 @@ const gallery = document.getElementById('gallery');
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightboxImg');
 
+// délégation clic / clavier pour ouvrir la lightbox — fonctionne pour .photo-card, .photo-lien, .gallery img, etc.
 gallery?.addEventListener('click', (e) => {
-    console.log('gallery click', e.target);
-    const card = e.target.closest('.photo-card');
-    if (!card) return;
+  // cible une carte galerie quelle que soit la classe utilisée
+  const card = e.target.closest('.photo-card, .photo-lien, .gallery-item');
+  if (card) {
     const imgEl = card.querySelector('img');
-    // prefer the actual img src/currentSrc (resolved path) because data-full may point to a non-existent folder
-    const src = imgEl?.currentSrc || imgEl?.src || card.dataset.full;
-    console.log('opening lightbox for', src);
-    if (!src) { console.warn('no image source found for this card'); return; }
-    openLightbox(src, imgEl?.alt || 'Photo');
+    const src = imgEl?.currentSrc || imgEl?.src || card.dataset.full || card.dataset.src;
+    if (src) openLightbox(src, imgEl?.alt || card.dataset.alt || 'Photo');
+    return;
+  }
+  // si on clique directement sur une image dans #gallery sans wrapper
+  const img = e.target.closest('#gallery img, .gallery img');
+  if (img) {
+    const src = img.currentSrc || img.src || img.dataset.full || img.dataset.src;
+    if (src) openLightbox(src, img.alt || 'Photo');
+  }
 });
 
-// also support keyboard open (Enter)
 gallery?.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-        const card = e.target.closest('.photo-card');
-        if (!card) return;
-        const imgEl = card.querySelector('img');
-        const src = imgEl?.currentSrc || imgEl?.src || card.dataset.full;
-        if (!src) { console.warn('no image source found for this card'); return; }
-        openLightbox(src, imgEl?.alt || 'Photo');
-    }
-})
+  if (e.key !== 'Enter') return;
+  const card = e.target.closest('.photo-card, .photo-lien, .gallery-item');
+  if (card) {
+    const imgEl = card.querySelector('img');
+    const src = imgEl?.currentSrc || imgEl?.src || card.dataset.full || card.dataset.src;
+    if (src) openLightbox(src, imgEl?.alt || card.dataset.alt || 'Photo');
+    return;
+  }
+  const img = e.target.closest('#gallery img, .gallery img');
+  if (img) {
+    const src = img.currentSrc || img.src || img.dataset.full || img.dataset.src;
+    if (src) openLightbox(src, img.alt || 'Photo');
+  }
+});
 
 function openLightbox(src, alt) {
     console.log('openLightbox called with', src, alt);
@@ -55,6 +65,41 @@ lightbox.addEventListener('click', (e) => {
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeLightbox();
 });
+
+// --- Ajout : attacher le lightbox aux images du carrousel ---
+(function attachCarouselLightbox() {
+  const carousel = document.getElementById('photoCarousel');
+  if (!carousel) return;
+  const imgs = carousel.querySelectorAll('img');
+  imgs.forEach(img => {
+    // rendre focusable et montrer que c'est cliquable
+    if (!img.hasAttribute('tabindex')) img.setAttribute('tabindex', '0');
+    img.style.cursor = 'pointer';
+
+    // clic -> ouvrir lightbox
+    img.addEventListener('click', () => {
+      const src = img.currentSrc || img.src || img.getAttribute('data-full') || img.dataset.full;
+      if (src) openLightbox(src, img.alt || 'Photo');
+    });
+
+    // clavier (Enter) -> ouvrir lightbox
+    img.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const src = img.currentSrc || img.src || img.getAttribute('data-full') || img.dataset.full;
+        if (src) openLightbox(src, img.alt || 'Photo');
+      }
+    });
+
+    // si l'image est à l'intérieur d'une .photo-card avec data-full, prioriser ce dataset
+    const wrapper = img.closest('.carousel-item .photo-card, .photo-card');
+    if (wrapper && (wrapper.dataset.full || wrapper.getAttribute('data-full'))) {
+      img.addEventListener('click', () => {
+        const src = wrapper.dataset.full || wrapper.getAttribute('data-full');
+        if (src) openLightbox(src, img.alt || 'Photo');
+      });
+    }
+  });
+})();
 
 // ARTICLE MODAL
 const articles = {
@@ -152,16 +197,16 @@ document.querySelectorAll('img').forEach(img => {
     }
 })();
 
-// Rendre l'image hero cliquable pour ouvrir la lightbox en grand écran
+// rendre le hero clickable pour toutes les images dans .hero-media
 (function heroClickable() {
-    const hero = document.querySelector('.hero-media .hero-img');
-    if (!hero) return;
-    // clic
-    hero.addEventListener('click', () => openLightbox(hero.src, hero.alt || 'Image'));
-    // ouverture clavier (Enter)
-    hero.addEventListener('keydown', (e) => { if (e.key === 'Enter') openLightbox(hero.src, hero.alt || 'Image'); });
-    // assure le curseur (au cas où)
+  const heroes = document.querySelectorAll('.hero-media img, .hero-media .hero-img');
+  heroes.forEach(hero => {
+    hero.addEventListener('click', () => openLightbox(hero.currentSrc || hero.src, hero.alt || 'Image'));
+    hero.addEventListener('keydown', (e) => { if (e.key === 'Enter') openLightbox(hero.currentSrc || hero.src, hero.alt || 'Image'); });
     hero.style.cursor = 'pointer';
+    // rendre focusable si nécessaire
+    if (!hero.hasAttribute('tabindex')) hero.setAttribute('tabindex', '0');
+  });
 })();
 
 // Back to top: show button after scrolling and smooth-scroll to top

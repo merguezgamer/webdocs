@@ -74,6 +74,13 @@
         color: var(--accent);
     }
 
+    h3{
+        color: var(--white);
+    }
+    h4{
+        color: var(--white);
+        text-align: center;
+    }
     /* -----------------------
        Conteneur central
        ----------------------- */
@@ -267,7 +274,7 @@
     }
 
 .photo-lien {
-  background-color: var(--accent);
+  background-color: #007BFF;
     min-height: 250px;
     transition: all 0.3s ease;
   border-radius: 10px;
@@ -336,6 +343,7 @@
     ---------------------------------- */
     .articles {
         grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        padding: 5%;
     }
 
     .card {
@@ -485,3 +493,47 @@
     .thumb:hover {
         transform: scale(1.05);
     }
+
+    /* full-bleed pour carrousel / galerie */
+.full-bleed {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
+  box-sizing: border-box;
+  padding: 0; /* si vous voulez du padding, ajustez ici */
+}
+
+/* hauteur par défaut et cover pour images du carrousel */
+#photoCarousel .carousel-item {
+  height: 60vh;
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--photo-card-bg);
+}
+#photoCarousel .carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* légendes */
+#photoCarousel .carousel-caption {
+  background: rgba(2,6,10,0.45);
+  border-radius: 6px;
+  padding: 8px 12px;
+}
+
+/* petit écran : hauteur réduite */
+@media (max-width: 768px) {
+  #photoCarousel .carousel-item { height: 40vh; }
+}
+
+#audio{
+    color: var(--white);
+}
