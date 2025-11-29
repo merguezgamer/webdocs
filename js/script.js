@@ -45,32 +45,32 @@ gallery?.addEventListener('keydown', (e) => {
 });
 
 function openLightbox(src, alt, captionText = null, descText = null) {
-    if (!src) return;
+  if (!src) return;
 
-    lightboxImg.src = src;
-    lightboxImg.alt = alt;
+  lightboxImg.src = src;
+  lightboxImg.alt = alt;
 
-    // légendes
-    if (captionText) document.getElementById("lightboxCaption").textContent = captionText;
-    if (descText) document.getElementById("lightboxDesc").textContent = descText;
+  // légendes
+  if (captionText) document.getElementById("lightboxCaption").textContent = captionText;
+  if (descText) document.getElementById("lightboxDesc").textContent = descText;
 
-    lightbox.classList.add("open");
-    lightbox.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
+  lightbox.classList.add("open");
+  lightbox.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
 }
 
 
 function closeLightbox() {
-    lightbox.classList.remove('open');
-    lightbox.setAttribute('aria-hidden', 'true');
-    lightboxImg.src = '';
-    document.body.style.overflow = '';
+  lightbox.classList.remove('open');
+  lightbox.setAttribute('aria-hidden', 'true');
+  lightboxImg.src = '';
+  document.body.style.overflow = '';
 }
 lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) closeLightbox();
+  if (e.target === lightbox) closeLightbox();
 });
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'Escape') closeLightbox();
 });
 
 // --- Ajout : attacher le lightbox aux images du carrousel ---
@@ -87,10 +87,10 @@ document.addEventListener('keydown', (e) => {
     img.addEventListener('click', () => {
       const wrapper = img.closest('.photo-card');
       openLightbox(
-          wrapper.dataset.full || img.src,
-          img.alt,
-          wrapper.dataset.caption,
-          wrapper.dataset.desc
+        wrapper.dataset.full || img.src,
+        img.alt,
+        wrapper.dataset.caption,
+        wrapper.dataset.desc
       );
     });
 
@@ -115,98 +115,98 @@ document.addEventListener('keydown', (e) => {
 
 // ARTICLE MODAL
 const articles = {
-    1: {
-        title: 'Comment la géothermie chauffe les écoles',
-        date: '10 septembre 2025',
-        body: `<p>Introduction — Extrait d'un reportage sur comment le réseau alimente les bâtiments scolaires. Interviews, photos et chiffres locaux.</p>
+  1: {
+    title: 'Comment la géothermie chauffe les écoles',
+    date: '10 septembre 2025',
+    body: `<p>Introduction — Extrait d'un reportage sur comment le réseau alimente les bâtiments scolaires. Interviews, photos et chiffres locaux.</p>
                <h4>Contexte</h4>
                <p>Le projet s'inscrit dans une politique territoriale visant à réduire les émissions de gaz à effet de serre. ...</p>
                <p style="color:var(--muted);font-size:0.9rem">(Ceci est un exemple — remplace par ton texte réel.)</p>`
-    },
-    2: {
-        title: 'Technique : forages et nappes phréatiques',
-        date: '1 octobre 2025',
-        body: `<p>Article technique sur les forages, les précautions et la surveillance de la ressource en eau.</p>`
-    },
-    3: {
-        title: 'Le territoire face à la transition',
-        date: '22 octobre 2025',
-        body: `<p>Analyse politique et sociale des réactions locales.</p>`
-    }
+  },
+  2: {
+    title: 'Technique : forages et nappes phréatiques',
+    date: '1 octobre 2025',
+    body: `<p>Article technique sur les forages, les précautions et la surveillance de la ressource en eau.</p>`
+  },
+  3: {
+    title: 'Le territoire face à la transition',
+    date: '22 octobre 2025',
+    body: `<p>Analyse politique et sociale des réactions locales.</p>`
+  }
 };
 
 const articleModal = document.getElementById('articleModal');
 const articleContent = document.getElementById('articleContent');
 
 function openArticle(id) {
-    const a = articles[id];
-    if (!a) return;
-    articleContent.innerHTML = `<h2 style="margin-top:0">${a.title}</h2><div class=\"meta\">${a.date}</div><div style=\"margin-top:12px\">${a.body}</div>`;
-    articleModal.classList.add('open');
-    articleModal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
+  const a = articles[id];
+  if (!a) return;
+  articleContent.innerHTML = `<h2 style="margin-top:0">${a.title}</h2><div class=\"meta\">${a.date}</div><div style=\"margin-top:12px\">${a.body}</div>`;
+  articleModal.classList.add('open');
+  articleModal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
 }
 function closeArticle() {
-    articleModal.classList.remove('open');
-    articleModal.setAttribute('aria-hidden', 'true');
-    articleContent.innerHTML = '';
-    document.body.style.overflow = '';
+  articleModal.classList.remove('open');
+  articleModal.setAttribute('aria-hidden', 'true');
+  articleContent.innerHTML = '';
+  document.body.style.overflow = '';
 }
 articleModal.addEventListener('click', (e) => { if (e.target === articleModal) closeArticle(); });
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeArticle(); });
 
 // TRANSCRIPTION (exemple simple)
 function toggleTranscript() {
-    alert('Transcription : colle ici la transcription de ton webdoc (ou ouvre un fichier .txt local).');
+  alert('Transcription : colle ici la transcription de ton webdoc (ou ouvre un fichier .txt local).');
 }
 
 // Téléchargement local : si le fichier video est local, le lien pourra déclencher le téléchargement
 function downloadVideo() {
-    const v = document.getElementById('docVideo');
-    const src = v.querySelector('source')?.src;
-    if (!src) { alert('Aucune source trouvée.'); return; }
-    // crée un lien <a> pour télécharger si le fichier est dans le dossier local
-    const a = document.createElement('a');
-    a.href = src;
-    a.download = src.split('/').pop() || 'video.mp4';
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
+  const v = document.getElementById('docVideo');
+  const src = v.querySelector('source')?.src;
+  if (!src) { alert('Aucune source trouvée.'); return; }
+  // crée un lien <a> pour télécharger si le fichier est dans le dossier local
+  const a = document.createElement('a');
+  a.href = src;
+  a.download = src.split('/').pop() || 'video.mp4';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
 }
 
 // small enhancement: scroll to section when clicking nav (smooth)
 document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', (e) => {
-        const href = a.getAttribute('href');
-        if (href === '#') return;
-        const el = document.querySelector(href);
-        if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-    });
+  a.addEventListener('click', (e) => {
+    const href = a.getAttribute('href');
+    if (href === '#') return;
+    const el = document.querySelector(href);
+    if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  });
 });
 
 // Fallback: si pas d'images locales, remplace par placeholders (utile pour test)
 document.querySelectorAll('img').forEach(img => {
-    img.addEventListener('error', () => {
-        // fallback safe SVG placeholder encoded to avoid JS syntax issues
-        const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500">'
-            + '<rect width="100%" height="100%" fill="#071018"/>'
-            + '<text x="50%" y="50%" fill="#aab6b9" font-family="Arial,Helvetica" font-size="20" dominant-baseline="middle" text-anchor="middle">Image manquante — ajoute tes fichiers dans le dossier photos/</text>'
-            + '</svg>';
-        img.src = 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
-    });
+  img.addEventListener('error', () => {
+    // fallback safe SVG placeholder encoded to avoid JS syntax issues
+    const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500">'
+      + '<rect width="100%" height="100%" fill="#071018"/>'
+      + '<text x="50%" y="50%" fill="#aab6b9" font-family="Arial,Helvetica" font-size="20" dominant-baseline="middle" text-anchor="middle">Image manquante — ajoute tes fichiers dans le dossier photos/</text>'
+      + '</svg>';
+    img.src = 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
+  });
 });
 
 // petit conseil : injecter une image hero si elle existe
 (function setHeroImage() {
-    const el = document.getElementById('heroMedia');
-    // chemins essayés (relatifs depuis ce fichier HTML)
-    const possible = ['hero.jpg', 'hero.png', 'photos/hero.jpg', '../images/hero.jpg'];
-    for (const p of possible) {
-        // on tente d'afficher : crée un élément image pour tester
-        const img = new Image();
-        img.src = p;
-        img.onload = () => { el.style.backgroundImage = `linear-gradient(180deg, rgba(7,10,12,0.15) 0%, rgba(7,10,12,0.5) 100%), url('${p}')`; };
-    }
+  const el = document.getElementById('heroMedia');
+  // chemins essayés (relatifs depuis ce fichier HTML)
+  const possible = ['hero.jpg', 'hero.png', 'photos/hero.jpg', '../images/hero.jpg'];
+  for (const p of possible) {
+    // on tente d'afficher : crée un élément image pour tester
+    const img = new Image();
+    img.src = p;
+    img.onload = () => { el.style.backgroundImage = `linear-gradient(180deg, rgba(7,10,12,0.15) 0%, rgba(7,10,12,0.5) 100%), url('${p}')`; };
+  }
 })();
 
 // rendre le hero clickable pour toutes les images dans .hero-media
@@ -223,17 +223,17 @@ document.querySelectorAll('img').forEach(img => {
 
 // Back to top: show button after scrolling and smooth-scroll to top
 (function backToTop() {
-    const btn = document.getElementById('backToTop');
-    if (!btn) return;
-    const showAfter = 240; // px
-    function toggle() {
-        if (window.scrollY > showAfter) { btn.classList.add('show'); btn.setAttribute('aria-hidden', 'false'); }
-        else { btn.classList.remove('show'); btn.setAttribute('aria-hidden', 'true'); }
-    }
-    // initial
-    toggle();
-    window.addEventListener('scroll', toggle, { passive: true });
-    btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-    btn.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); btn.click(); } });
+  const btn = document.getElementById('backToTop');
+  if (!btn) return;
+  const showAfter = 240; // px
+  function toggle() {
+    if (window.scrollY > showAfter) { btn.classList.add('show'); btn.setAttribute('aria-hidden', 'false'); }
+    else { btn.classList.remove('show'); btn.setAttribute('aria-hidden', 'true'); }
+  }
+  // initial
+  toggle();
+  window.addEventListener('scroll', toggle, { passive: true });
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  btn.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); btn.click(); } });
 })();
 
