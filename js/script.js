@@ -225,3 +225,23 @@ document.querySelectorAll('img').forEach(img => {
     btn.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); btn.click(); } });
 })();
 
+document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll(".photo-card");
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightboxImg");
+    const caption = document.getElementById("lightboxCaption");
+    const desc = document.getElementById("lightboxDesc");
+
+    cards.forEach(card => {
+        card.addEventListener("click", () => {
+            lightboxImg.src = card.dataset.full;
+            caption.textContent = card.dataset.caption || "Titre de la photo";
+            desc.textContent = card.dataset.desc || "Aucune description fournie.";
+            lightbox.classList.add("open");
+        });
+    });
+});
+
+function closeLightbox() {
+    document.getElementById("lightbox").classList.remove("open");
+}
