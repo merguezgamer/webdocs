@@ -44,15 +44,22 @@ gallery?.addEventListener('keydown', (e) => {
   }
 });
 
-function openLightbox(src, alt) {
-    console.log('openLightbox called with', src, alt);
-    if (!src) { console.warn('no src provided to openLightbox'); return; }
+function openLightbox(src, alt, captionText = null, descText = null) {
+    if (!src) return;
+
     lightboxImg.src = src;
     lightboxImg.alt = alt;
-    lightbox.classList.add('open');
+
+    // légendes
+    if (captionText) document.getElementById("lightboxCaption").textContent = captionText;
+    if (descText) document.getElementById("lightboxDesc").textContent = descText;
+
+    lightbox.classList.add("open");
     lightbox.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
 }
+
+
 function closeLightbox() {
     lightbox.classList.remove('open');
     lightbox.setAttribute('aria-hidden', 'true');
@@ -78,8 +85,13 @@ document.addEventListener('keydown', (e) => {
 
     // clic -> ouvrir lightbox
     img.addEventListener('click', () => {
-      const src = img.currentSrc || img.src || img.getAttribute('data-full') || img.dataset.full;
-      if (src) openLightbox(src, img.alt || 'Photo');
+      const wrapper = img.closest('.photo-card');
+      openLightbox(
+          wrapper.dataset.full || img.src,
+          img.alt,
+          wrapper.dataset.caption,
+          wrapper.dataset.desc
+      );
     });
 
     // clavier (Enter) -> ouvrir lightbox
@@ -225,23 +237,3 @@ document.querySelectorAll('img').forEach(img => {
     btn.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); btn.click(); } });
 })();
 
-document.addEventListener("DOMContentLoaded", () => {
-    const cards = document.querySelectorAll(".photo-card");
-    const lightbox = document.getElementById("lightbox");
-    const lightboxImg = document.getElementById("lightboxImg");
-    const caption = document.getElementById("lightboxCaption");
-    const desc = document.getElementById("lightboxDesc");
-
-    cards.forEach(card => {
-        card.addEventListener("click", () => {
-            lightboxImg.src = card.dataset.full;
-            caption.textContent = card.dataset.caption || "Titre de la photo";
-            desc.textContent = card.dataset.desc || "Aucune description fournie.";
-            lightbox.classList.add("open");
-        });
-    });
-});
-
-function closeLightbox() {
-    document.getElementById("lightbox").classList.remove("open");
-}
